@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
 import { Card, CardMedia, Typography, CardContent, CardActionArea, Drawer, SwipeableDrawer, GridList, GridListTile } from '@material-ui/core';
-
+import DateRangeIcon from '@material-ui/icons/DateRange';
 
 import Axios from 'axios';
 import { AXIOS_HEADERS } from "../../configs/axios-configs";
 import { makeStyles } from '@material-ui/styles';
 
 import "../../styles/feeds.css";
-import { LinkedIn, Share, ThumbUp } from '@material-ui/icons';
+import { Share, ThumbUp } from '@material-ui/icons';
 
 const APIURL = 'https://covid-pulse-api.herokuapp.com/api/covid19/';
 
@@ -108,6 +108,13 @@ const Feeds = () => {
                         <div className="summary-cont">
                             <div className="likes"><ThumbUp></ThumbUp> {selectedFeed.likes}</div>
                             <div className="shares"><Share></Share> {selectedFeed.shared}</div>
+                            <div className="created-date"><DateRangeIcon></DateRangeIcon> {selectedFeed.created_at}</div>
+                        </div>
+                        <div className="img-holders">
+                            {FeedImg(selectedFeed.imgs, 20)}
+                        </div>
+                        <div className="credits">
+                            {selectedFeed.by}
                         </div>
                     </div>
                 </SwipeableDrawer>

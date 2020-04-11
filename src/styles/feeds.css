@@ -28,12 +28,29 @@
 .feed-detail .summary-cont{
     display: flex;
     color: #8e6eb2;
+    font-size: 14px;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: 16px 0px 10px 0px;
 }
 
-.feed-detail .summary-cont .likes{
-    flex-grow: 1;
+.feed-detail .img-holders{
+    margin-top: 20px;
+}
+
+.feed-detail .img-holders img{
+    margin-bottom: 1px;
+    background-size: cover;
+    height: 100%;
+}
+
+.feed-detail .credits{
+    text-align: right;
+    color: #8e6eb2;
+    padding-top: 10px;
+}
+
+.MuiPaper-root.MuiDrawer-paper.MuiDrawer-paperAnchorRight.MuiPaper-elevation16 {
+    width: 80%;
 }
