@@ -10,13 +10,29 @@
     top: 25px;
 }
 
+.stepper-cont{
+    padding: 20px 10px 0px;
+}
+
 ._title {
-    margin-bottom: 12px;
-    text-align: center;
+    margin-bottom: 5px;
+    text-align: left;
+    padding: 0 24px;
+    color: #9E7CC1!important;
+    /* font-weight: 600; */
+}
+
+
+._subtitle {
+    text-align: left;
+    color: #777777;
+    /* font-weight: 600; */
+    padding: 0 24px;
+    font-size: 14px;
 }
 
 .form-space {
-    padding: 20px 0px;
+    padding: 20px 0px 0px;
 }
 
 .gender {
@@ -47,11 +63,6 @@
     -webkit-transform: translateX(-50%);
 }
 
-._subtitle {
-    text-align: center;
-    color: #424242;
-}
-
 
 ._divider {
     margin-top: -19px;
@@ -79,4 +90,28 @@
 
 .auto-complete {
     margin: 10% 0px;
+}
+
+
+
+/* For Form */
+
+.form-container{
+    padding: 0 24px;
+}
+
+.btn-cont{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 2rem; 
+}
+
+.patient-symptom {
+    resize: none;
+}
+
+.patient-symptom:hover, .patient-symptom:focus{
+    border-color: #9E7CC1 !important;
+    box-shadow: unset;
 }

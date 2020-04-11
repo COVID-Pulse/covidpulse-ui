@@ -6,11 +6,14 @@ import NavBar from "./components/containers/NavBar";
 import LookUp from "./components/containers/LookUp";
 import Report from "./components/containers/Report";
 import Hotspots from "./components/containers/HotSpots";
+import { ThemeProvider } from '@material-ui/core';
+import { theme } from './themeprovider';
 
 const google = window.google;
 
 function App() {
   return (
+      <ThemeProvider theme={theme}>
         <Router>
             <div className="app">
                 <Route path="/hotspots" component={LookUp} />
@@ -20,6 +23,7 @@ function App() {
                 <NavBar/>
             </div>
         </Router>
+        </ThemeProvider>
   );
 }
 
