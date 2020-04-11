@@ -3,6 +3,7 @@ import MapComponent from "./MapComponent";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng,} from 'react-places-autocomplete';
 import Divider from "@material-ui/core/Divider/index";
 import Button from "@material-ui/core/Button/index";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Location = (props) => {
 
@@ -13,9 +14,7 @@ const Location = (props) => {
 
     const [address, setAddress] = useState("");
 
-    const [location, setLocation] = useState({
-        lat : "",
-        lon : "",
+    const [locationInfo, setLocationInfo] = useState({
         state : "",
         city : "",
         area: "",
@@ -23,60 +22,56 @@ const Location = (props) => {
     });
 
 
+
     const updateLocation = (mapData) => {
-        const address_components = mapData.address_component;
-        let updateLocation = {
+        const address_components = mapData.address_components;
+
+
+        let updateLocationData = {
             state : "",
             city : "",
             area: "",
             country: ""
         };
 
-        address_components.forEach(address_component => {
+        address_components.map( address_component => {
             if (address_component.types[0] === "political") {
-                updateLocation.area = address_component.long_name;
+                updateLocationData.area = address_component.long_name;
             }
 
             if (address_component.types[0] === "locality") {
-                console.log("town:" + address_component.long_name);
-                updateLocation.city = address_component.long_name;
+                updateLocationData.city = address_component.long_name;
             }
 
             if (address_component.types[0] === "administrative_area_level_1") {
-                console.log("town:" + address_component.long_name);
-                updateLocation.state = address_component.short_name;
+                updateLocationData.state = address_component.short_name;
             }
 
             if (address_component.types[0] === "country") {
-                console.log("country:" + address_component.long_name);
-                updateLocation.country = address_component.long_name;
+                updateLocationData.country = address_component.long_name;
 
             }
+            return true;
         });
-
-        setLocation({
-            ...location,
-            updateLocation
-        })
-    };
-
-    const updateLatLng = (data) => {
-      setLocation({
-          ...location,
-          lat : data.lat,
-          lon : data.lng,
-      });
+        return updateLocationData;
     };
 
     const handleSelect = async value => {
-        console.log(value);
-        geocodeByAddress(address)
+        setAddress(value);
+        geocodeByAddress(value)
             .then(results => {
-                console.log(results);
                 const data = results[0];
                 const latLng = getLatLng(data);
-                updateLocation(data);
-                updateLatLng(latLng);
+                const updateLocationData = updateLocation(data);
+
+                setLocationInfo({
+                    ...Location,
+                    state : updateLocationData.state,
+                    city : updateLocationData.city,
+                    area: updateLocationData.area,
+                    country: updateLocationData.country
+
+                });
                 return latLng;
             })
             .then(latLng => {
@@ -87,7 +82,13 @@ const Location = (props) => {
 
     const goBack = () => {
         props.updateStepper();
-    }
+    };
+
+    const completeInfo = () => {
+        locationInfo["lat"] = position.lat;
+        locationInfo["lon"] = position.lng
+        props.updateLocationAndPostReport(locationInfo);
+    };
 
     return (
         <div>
@@ -99,7 +100,7 @@ const Location = (props) => {
             <PlacesAutocomplete
                 value={address}
                 onChange={setAddress}
-                onSelect={handleSelect.bind(this)}
+                onSelect={handleSelect}
             >
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                     <div className={"auto-complete"}>
@@ -108,12 +109,13 @@ const Location = (props) => {
                                 placeholder: 'Locality..',
                                 className: 'location-search-input form-control',
                             })}
+                            value={address}
                         />
                         <div className="autocomplete-dropdown-container custom-dropdown-style">
 
 
                             {loading && <div>Loading...</div>}
-                            {suggestions.map(suggestion => {
+                            {suggestions.map((suggestion, key) => {
                                 const className = suggestion.active
                                     ? 'suggestion-item--active custom-dropdown-item'
                                     : 'suggestion-item custom-dropdown-item';
@@ -122,7 +124,7 @@ const Location = (props) => {
                                     ? { backgroundColor: '#fafafa', cursor: 'pointer' }
                                     : { backgroundColor: '#ffffff', cursor: 'pointer' };
                                 return (
-                                    <div>
+                                    <div key={key}>
                                         <div
                                             {...getSuggestionItemProps(suggestion, {
                                                 className,
@@ -146,8 +148,8 @@ const Location = (props) => {
                     Back
                 </Button>
 
-                <Button variant="contained" color="primary" className={"_button"} >
-                    Complete
+                <Button variant="contained" color="primary" className={"_button"} disabled={props.loading} onClick={completeInfo.bind(this)} >
+                    {props.loading ? <CircularProgress size={20} color={"secondary"}/> : "Complete"}
                 </Button>
             </div>
         </div>
