@@ -6,13 +6,21 @@
   "main": "index.js",
   "homepage": "./",
   "dependencies": {
+    "@material-ui/core": "^4.9.9",
+    "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
     "cordova-android": "^8.1.0",
+    "google-map-react": "^1.1.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-google-maps": "^9.4.5",
+    "react-places-autocomplete": "^7.2.1",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "recompose": "^0.30.0",
     "rimraf": "^3.0.2"
   },
   "scripts": {

@@ -1,0 +1,10 @@
+._navbar {
+    position: fixed;
+    bottom: 0px;
+    width: 100vw;
+    border-top: 1px solid #ececec;
+}
+
+_navitem {
+    font-family: 'UberMove', 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif !important;
+}
