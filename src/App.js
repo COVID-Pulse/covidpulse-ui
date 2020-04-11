@@ -21,7 +21,7 @@ function App() {
                 <Route path="/feeds" component={Feeds} />
                 <Route path="/report" component={Report} />
                 <Route path="/loopkup" component={Hotspots} />
-                <Redirect from={"/"} to={"/report"}/>
+                <Redirect from={"/"} to={"/feeds"}/>
                 <NavBar/>
             </div>
         </Router>

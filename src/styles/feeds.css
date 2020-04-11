@@ -1,0 +1,39 @@
+
+
+
+
+.feeds-wrapper{
+    position: fixed;
+    left: 0;
+    right: 0;
+    background: #f7f8fb;
+    top: 0;
+    bottom: 36px;
+    overflow: auto;
+    padding: 20px;
+}
+
+.feeds-wrapper::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+.feed-detail {
+    margin: 2rem;
+    background: #f7f8fb;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.feed-detail .summary-cont{
+    display: flex;
+    color: #8e6eb2;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 16px 0px 10px 0px;
+}
+
+.feed-detail .summary-cont .likes{
+    flex-grow: 1;
+}
