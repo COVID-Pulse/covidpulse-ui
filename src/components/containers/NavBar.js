@@ -2,7 +2,7 @@ import React from 'react';
 import BottomNavigation from "@material-ui/core/BottomNavigation/index";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction/index";
 import {Link} from "react-router-dom";
-import { LocationOn, DeveloperBoard, AddCircleOutline } from "@material-ui/icons";
+import { LocationOn, DeveloperBoard, AddCircleOutline, TrendingUp } from "@material-ui/icons";
 import "../../styles/navbar.css"
 
 const NavBar = () => {
@@ -10,14 +10,14 @@ const NavBar = () => {
     const [value, setValue] = React.useState(0);
 
     const routes = [ {
+        path: "/feeds",
+        label: "Feeds",
+        component: <TrendingUp />
+    }, {
         path: "/hotspots",
         label: "HotSpots",
         component: <LocationOn />
-    }, {
-        path: "/feeds",
-        label: "Feeds",
-        component: <AddCircleOutline />
-    }, {
+    },{
         path: "/loopkup",
         label: "LookUp Case",
         component: <DeveloperBoard />
