@@ -4,6 +4,8 @@ import axios from 'axios';
 import ListComponent from "../presentations/ListComponent";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import {Link} from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 const LookUp = () => {
 
@@ -33,7 +35,7 @@ const LookUp = () => {
                 let respOthers = [];
 
                 response.data.map(lookupData => {
-                    if (lookupData.reported_by && lookupData.reported_by.toLowerCase() === localStorage.getItem("id").toLowerCase()) {
+                    if (lookupData.reported_by && lookupData.reported_by.toLowerCase() === localStorage.getItem("deviceId").toLowerCase()) {
                         respReportByMe.push(lookupData);
                     } else {
                         respOthers.push(lookupData);
@@ -66,23 +68,30 @@ const LookUp = () => {
             });
     };
 
-    console.log(open);
     return (
-        <div className={"_wrapper"}>
-            <Backdrop open={open} style={{zIndex: "9999"}} onClick={handleClose}>
-                <CircularProgress color="inherit"/>
-            </Backdrop>
-            <Paper elevation={0}>
-                <div className={"_title"}>Lookup Case</div>
-                <div className={"underline"}></div>
-            </Paper>
-            <div className={"lookup-container"}>
-                <div className={"lookup-section-header"}>Report by me</div>
-                <ListComponent reports={lookUp.reportedByMe} byMyself={true} deleteReport={deleteReports.bind(this)}/>
-            </div>
-            <div className={"lookup-container"}>
-                <div className={"lookup-section-header"}>Others</div>
-                <ListComponent reports={lookUp.others} byMyself={false} deleteReport={deleteReports.bind(this)}/>
+        <div>
+            <div className={"_wrapper"}>
+                <Backdrop open={open} style={{zIndex: "9999"}} onClick={handleClose}>
+                    <CircularProgress color="inherit"/>
+                </Backdrop>
+                <Paper elevation={0}>
+                    <div className={"_title"}>Lookup Case
+                        <Button component={Link} to={"/report"} style={{float: "right"}} className={"report-case-but"}
+                                variant="outlined" color="primary">
+                            <span className={"add-icon"}>+</span> Report Case
+                        </Button>
+                    </div>
+
+                </Paper>
+                <div className={"lookup-container"}>
+                    <div className={"lookup-section-header"}>Report by me</div>
+                    <ListComponent reports={lookUp.reportedByMe} byMyself={true}
+                                   deleteReport={deleteReports.bind(this)}/>
+                </div>
+                <div className={"lookup-container"}>
+                    <div className={"lookup-section-header"}>Others</div>
+                    <ListComponent reports={lookUp.others} byMyself={false} deleteReport={deleteReports.bind(this)}/>
+                </div>
             </div>
         </div>
     )

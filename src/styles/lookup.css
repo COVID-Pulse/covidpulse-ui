@@ -64,3 +64,17 @@
 .delete:hover {
     cursor: pointer;
 }
+
+
+.report-case-but {
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 13px!important;
+}
+
+.add-icon {
+    font-size: 20px;
+    position: relative;
+    padding-right: 4px;
+    bottom: 1px;
+}

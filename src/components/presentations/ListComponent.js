@@ -14,6 +14,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 
+
 const ListComponent = (props) => {
 
     const colorPalette = [
@@ -66,11 +67,7 @@ const ListComponent = (props) => {
                                     <Grid container>
                                         <Grid item xs={12}>
                                             <span className={"section-header"}>Patient - {report.id}</span>
-                                            <Delete className={"delete"} onClick={() => handleClickOpen(report.id)}/>
-                                        </Grid>
-                                        <Grid item xs={12}>
-                                            <span className={"section-label"}>symptoms</span>
-                                            <span className={"section-chip"}>{report.symptom.split(",").map((s, k) => <Chip key={k} label={s} />)}</span>
+                                            { props.byMyself ? <Delete className={"delete"} onClick={() => handleClickOpen(report.id)}/> : <div/>}
                                         </Grid>
                                         <Grid item xs={4}>
                                             <span className={"section-label"}>age</span>
@@ -79,6 +76,10 @@ const ListComponent = (props) => {
                                         <Grid item xs={4}>
                                             <span className={"section-label"}>gender</span>
                                             <span className={"section-value"}>{getGender(report.gender)}</span>
+                                        </Grid>
+                                        <Grid item xs={12} style={{marginTop: "10px"}}>
+                                            <span className={"section-label"}>symptoms</span>
+                                            <span className={"section-chip"}>{report.symptom.split(",").map((s, k) => <Chip key={k} label={s} style={{marginRight: "5px"}} />)}</span>
                                         </Grid>
                                     </Grid>
                                 </Grid>
@@ -114,6 +115,7 @@ const ListComponent = (props) => {
                     </Button>
                 </DialogActions>
             </Dialog>
+
 
         </div>
     )
