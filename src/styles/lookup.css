@@ -1,0 +1,66 @@
+.lookup-container {
+    margin: 20px 0px;
+}
+
+
+.lookup-section-header {
+    color: #717171;
+    font-weight: 600;
+}
+
+
+.no-data-card {
+    TEXT-ALIGN: center;
+    margin: 5px 0px;
+    padding: 23px;
+}
+
+
+.report-divider {
+    /*border-right: 1px solid #d2caca;*/
+    /*margin-right: -15px;*/
+}
+
+
+.grid-container {
+    margin: 10px 0px !important;
+    position: relative;
+}
+
+
+.avatar-details {
+    font-size: 15px !important;
+    font-weight: 800;
+    position: absolute;
+    top: 50%;
+    margin-top: 50%;
+    text-align: center;
+}
+
+
+.section-label {
+    font-size: 12px;
+    margin-right: 10px;
+    color: #8a8a8a;
+}
+
+.section-header {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+
+.section-chip {
+    font-size: 13px;
+}
+
+
+.delete {
+    float: right;
+    margin-right: 15px;
+    color: #ce2828;
+}
+
+.delete:hover {
+    cursor: pointer;
+}

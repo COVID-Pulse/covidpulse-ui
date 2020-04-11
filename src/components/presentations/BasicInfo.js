@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import FormControl from "@material-ui/core/FormControl/index";
 import RadioGroup from "@material-ui/core/RadioGroup/index";
 import FormControlLabel from "@material-ui/core/FormControlLabel/index";
 import Radio from "@material-ui/core/Radio/index";
 import Button from "@material-ui/core/Button/index";
-import { TextField, Paper, InputLabel } from '@material-ui/core';
+import {InputLabel, Paper, TextField} from '@material-ui/core';
 
 const BasicInfo = (props) => {
-    const [activeStep, setActiveStep] = React.useState(0);
 
     const [basicInfo, setBasicInfo] = useState({
         age: "",

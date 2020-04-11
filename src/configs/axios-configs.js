@@ -1,8 +1,8 @@
-const AXIOS_HEADERS = {
+const AXIOS_CONFIGS = {
     headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*"
     }
 };
 
-export { AXIOS_HEADERS }
+export { AXIOS_CONFIGS }

@@ -4,11 +4,11 @@ import { Card, CardMedia, Typography, CardContent, CardActionArea, Drawer, Swipe
 import DateRangeIcon from '@material-ui/icons/DateRange';
 
 import Axios from 'axios';
-import { AXIOS_HEADERS } from "../../configs/axios-configs";
 import { makeStyles } from '@material-ui/styles';
 
 import "../../styles/feeds.css";
 import { Share, ThumbUp } from '@material-ui/icons';
+import {AXIOS_CONFIGS} from "../../configs/axios-configs";
 
 const APIURL = 'https://covid-pulse-api.herokuapp.com/api/covid19/';
 
@@ -43,7 +43,7 @@ const Feeds = () => {
 
     useEffect(() => {
         const today = new Date();
-        Axios.get(APIURL + `feeds/?page=${pageNo}&ordering=-likes`, AXIOS_HEADERS)
+        Axios.get(APIURL + `feeds/?page=${pageNo}&ordering=-likes`, AXIOS_CONFIGS)
             .then((data) => {
                 setFeeds(data.data.results);
             }).catch((error) => {

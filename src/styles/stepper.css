@@ -14,22 +14,6 @@
     padding: 20px 10px 0px;
 }
 
-._title {
-    margin-bottom: 5px;
-    text-align: left;
-    padding: 0 24px;
-    color: #9E7CC1!important;
-    /* font-weight: 600; */
-}
-
-
-._subtitle {
-    text-align: left;
-    color: #777777;
-    /* font-weight: 600; */
-    padding: 0 24px;
-    font-size: 14px;
-}
 
 .form-space {
     padding: 20px 0px 0px;
@@ -53,15 +37,6 @@
     color: #78767b;
 }
 
-.underline {
-    border: 2px solid #3f51b5;
-    width: 53px;
-    margin-left: 2px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-}
 
 
 ._divider {

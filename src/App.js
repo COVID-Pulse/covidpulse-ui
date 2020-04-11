@@ -17,11 +17,11 @@ function App() {
       <ThemeProvider theme={theme}>
         <Router>
             <div className="app">
-                <Route path="/hotspots" component={LookUp} />
                 <Route path="/feeds" component={Feeds} />
+                <Route path="/hotspots" component={Hotspots} />
                 <Route path="/report" component={Report} />
-                <Route path="/loopkup" component={Hotspots} />
-                <Redirect from={"/"} to={"/feeds"}/>
+                <Route path="/loopkup" component={LookUp} />
+                <Redirect from={"/"} to={"/loopkup"}/>
                 <NavBar/>
             </div>
         </Router>

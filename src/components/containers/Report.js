@@ -3,7 +3,7 @@ import BasicInfo from "../presentations/BasicInfo";
 import Location from "../presentations/Location";
 import "../../styles/stepper.css"
 import axios from 'axios';
-import {AXIOS_HEADERS} from "../../configs/axios-configs";
+import {AXIOS_CONFIGS} from "../../configs/axios-configs";
 
 const Report = () => {
 
@@ -50,7 +50,7 @@ const Report = () => {
         };
 
         setLoading(true);
-        axios.post("https://covid-pulse-api.herokuapp.com/api/covid19/report/", payload, AXIOS_HEADERS)
+        axios.post("https://covid-pulse-api.herokuapp.com/api/covid19/report/", payload, AXIOS_CONFIGS)
             .then((result) => {
                 console.log(result);
                 decreaseStepper();
@@ -71,7 +71,7 @@ const Report = () => {
     ];
 
     return (
-        <div className={"_stepper-wrapper"}>
+        <div className={"_stepper-wrapper _wrapper"}>
             {stepperComponents[stepperIndex].component}
         </div>
     )

@@ -25,3 +25,41 @@ a {
 a, u {
   text-decoration: none;
 }
+
+
+._title {
+  margin-bottom: 5px;
+  text-align: left;
+  font-size: 25px;
+  /*color: #9E7CC1!important;*/
+  /* font-weight: 600; */
+}
+
+
+._subtitle {
+  text-align: left;
+  color: #777777;
+  /* font-weight: 600; */
+  padding: 0 24px;
+  font-size: 14px;
+}
+
+
+.underline {
+  border: 2px solid #3f51b5;
+  width: 53px;
+  margin-left: 2px;
+  /*position: absolute;*/
+  /*left: 50%;*/
+  /*transform: translateX(-50%);*/
+  /*-webkit-transform: translateX(-50%);*/
+}
+
+
+._wrapper {
+  margin: 20px;
+  position: relative;
+  top: 10px;
+  height: 90vh;
+  overflow: scroll;
+}
