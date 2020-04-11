@@ -26,7 +26,6 @@ const Report = () => {
     };
 
     const updateBasicInfo = (data) => {
-        console.log("Basic");
         setReport({
             ...report,
             age: data.age,
@@ -37,7 +36,6 @@ const Report = () => {
     };
 
     const updateLocationAndPostReport = (data) => {
-        console.log("Location");
         const payload = {
             age : report.age,
             gender : report.gender,

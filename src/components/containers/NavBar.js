@@ -14,8 +14,8 @@ const NavBar = () => {
         label: "HotSpots",
         component: <LocationOn />
     }, {
-        path: "/report",
-        label: "Report Case",
+        path: "/feeds",
+        label: "Feeds",
         component: <AddCircleOutline />
     }, {
         path: "/loopkup",

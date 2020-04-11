@@ -4,6 +4,7 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng,} from 'react-places-au
 import Divider from "@material-ui/core/Divider/index";
 import Button from "@material-ui/core/Button/index";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import "../../styles/location.css";
 
 const Location = (props) => {
 
@@ -94,57 +95,62 @@ const Location = (props) => {
         <div>
             <div className={"_title"}>
                 <div style={{fontSize: "x-large"}}>Location Info</div>
-                <div className={"underline"}/>
             </div>
-            <div className={"_subtitle"}>What is the patient location?</div>
-            <PlacesAutocomplete
-                value={address}
-                onChange={setAddress}
-                onSelect={handleSelect}
-            >
-                {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                    <div className={"auto-complete"}>
-                        <input
-                            {...getInputProps({
-                                placeholder: 'Locality..',
-                                className: 'location-search-input form-control',
-                            })}
-                            value={address}
-                        />
-                        <div className="autocomplete-dropdown-container custom-dropdown-style">
+            <div className="_subtitle">
+                Please selet the location of the patient 
+            </div>
+            
+            <div className="location-wrapper" >
+                <PlacesAutocomplete
+                    value={address}
+                    onChange={setAddress}
+                    onSelect={handleSelect}
+                >
+                    {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                        <div className={"auto-complete"}>
+                            <input
+                                {...getInputProps({
+                                    placeholder: 'Locality..',
+                                    className: 'location-search-input form-control',
+                                })}
+                                value={address}
+                            />
+                            <div className="autocomplete-dropdown-container custom-dropdown-style">
 
 
-                            {loading && <div>Loading...</div>}
-                            {suggestions.map((suggestion, key) => {
-                                const className = suggestion.active
-                                    ? 'suggestion-item--active custom-dropdown-item'
-                                    : 'suggestion-item custom-dropdown-item';
-                                // inline style for demonstration purpose
-                                const style = suggestion.active
-                                    ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                                    : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                                return (
-                                    <div key={key}>
-                                        <div
-                                            {...getSuggestionItemProps(suggestion, {
-                                                className,
-                                                style,
-                                            })}
-                                        >
-                                            <span>{suggestion.description}</span>
+                                {loading && <div>Loading...</div>}
+                                {suggestions.map((suggestion, key) => {
+                                    const className = suggestion.active
+                                        ? 'suggestion-item--active custom-dropdown-item'
+                                        : 'suggestion-item custom-dropdown-item';
+                                    // inline style for demonstration purpose
+                                    const style = suggestion.active
+                                        ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                                        : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                                    return (
+                                        <div key={key}>
+                                            <div
+                                                {...getSuggestionItemProps(suggestion, {
+                                                    className,
+                                                    style,
+                                                })}
+                                            >
+                                                <span>{suggestion.description}</span>
+                                            </div>
+                                            <Divider/>
                                         </div>
-                                        <Divider/>
-                                    </div>
-                                );
-                            })}
+                                    );
+                                })}
 
+                            </div>
                         </div>
-                    </div>
-                )}
-            </PlacesAutocomplete>
-            <MapComponent height={"200px"} width={"100%"} position={position}/>
-            <div className={"justify-end"}>
-                <Button onClick={() => goBack()} style={{marginRight: "19%", background: "#dfe0e0"}}>
+                    )}
+                </PlacesAutocomplete>
+                <MapComponent height={"250px"} width={"100%"} position={position}/>
+            </div>
+            
+            <div className={"btn-cont"} style={{ justifyContent : 'space-around' }}>
+                <Button onClick={() => goBack()} style={{background: "#dfe0e0"}}>
                     Back
                 </Button>
 

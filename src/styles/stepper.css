@@ -4,10 +4,10 @@
 }
 
 ._stepper-wrapper {
-    height: 70vh;
-    margin: 20px;
+    height: calc(86vh - 16px);
+    margin: 32px 16px 16px;
     position: relative;
-    top: 25px;
+    top: 0;
 }
 
 .stepper-cont{
@@ -87,13 +87,6 @@
     background: #f3f3f3;
 }
 
-
-.auto-complete {
-    margin: 10% 0px;
-}
-
-
-
 /* For Form */
 
 .form-container{
@@ -103,7 +96,7 @@
 .btn-cont{
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     margin-top: 2rem; 
 }
 
