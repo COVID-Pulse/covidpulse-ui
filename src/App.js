@@ -7,13 +7,13 @@ import LookUp from "./components/containers/LookUp";
 import Report from "./components/containers/Report";
 import Hotspots from "./components/containers/HotSpots";
 import { ThemeProvider } from '@material-ui/core';
-import { theme } from './themeprovider';
+import { theme } from './configs/theme-provider';
 
 const google = window.google;
 
 function App() {
   return (
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>x`
         <Router>
             <div className="app">
                 <Route path="/hotspots" component={LookUp} />
