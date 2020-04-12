@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 import { Card, CardMedia, Typography, CardContent, CardActionArea, SwipeableDrawer, CircularProgress, CardActions, Button, CardHeader, Avatar } from '@material-ui/core';
-import DateRangeIcon from '@material-ui/icons/DateRange';
 
 import Axios from 'axios';
 import { makeStyles } from '@material-ui/styles';
@@ -9,6 +8,9 @@ import { makeStyles } from '@material-ui/styles';
 import "../../styles/feeds.css";
 import { Share } from '@material-ui/icons';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+
+
+const $ = window.$;
 
 const APIURL = 'https://covid-pulse-api.herokuapp.com/api/covid19/';
 
@@ -73,17 +75,34 @@ const Feeds = () => {
     const [openanchor, setOpenAnchor] = useState(false);
     const [selectedFeed, setSelectedFeed] = useState(undefined);
     const [scrolling, setscrolling] = useState(false);
+    const [reachedLastPage, setReachedLastPage] = useState(false);
+    const [fetchingData, setFecthingData ] = useState(false);
 
-    useEffect(() => {
-        Axios.get(APIURL + `feeds/?page=${pageNo}&ordering=-created_at,-likes,-timestamp`)
+    const fetchFeeds = () => {
+        setFecthingData(true);
+        Axios.get(APIURL + `feeds/?page=${pageNo}&ordering=-timestamp`)
             .then((data) => {
-                setFeeds(data.data.results);
+                if ( data.data.next === null ) {
+                    setReachedLastPage(true);
+                }
+                if ( feeds.length > 0 ) {
+                    setFeeds([...feeds, ...data.data.results]);
+                } else {
+                    setFeeds(data.data.results);
+                }
             }).catch((error) => {
                 console.log(error);
             }).finally(() => {
                 setLoading(false);
+                setFecthingData(false);
             });
-    }, [])
+    }
+
+    useEffect( () => {
+        if ( !reachedLastPage && !fetchingData ) {
+            fetchFeeds();
+        }
+    }, [pageNo])
 
     const FeedImg = (imgs, size) => {
         if (!imgs) {
@@ -137,6 +156,11 @@ const Feeds = () => {
     const handleScroll = (e) => {
         if ( e.target.scrollTop > 10 )  {
             setscrolling(true)
+            if ( $('.feeds-wrapper').scrollTop() + $('.feeds-wrapper').height() >= $('.feeds-wrapper')[0].scrollHeight - $('.feeds-wrapper').height() ) {
+                if ( !reachedLastPage ) {
+                    setPageNo(pageNo + 1);
+                }
+            }
             return;
         }
         setscrolling(false)
@@ -148,13 +172,16 @@ const Feeds = () => {
                 <div className={ scrolling ? "_title float-top onscroll" : "_title float-top" }  >
                     Feeds
                 </div>
-                { loading ? <CircularProgress disableShrink /> :
-                    feeds.map((feed) => {
-                        return (
-                            getFeed(feed, 1)
-                        )
-                    })
+                {
+                                        feeds.map((feed) => {
+                                            return (
+                                                getFeed(feed, 1)
+                                            )
+                                        })
                 }
+                <div style={{ display : "flex", alignItems : "center", justifyContent : "center" }}>
+                    {fetchingData ? <CircularProgress></CircularProgress> : ''}
+                </div>
             </div>
             { selectedFeed !== undefined ? 
                 <SwipeableDrawer anchor="right" onOpen={handleOnCose} open={openanchor} onClose={handleOnCose} onClick={() => setOpenAnchor(false)} >
