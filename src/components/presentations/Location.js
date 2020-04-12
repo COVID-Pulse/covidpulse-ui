@@ -76,6 +76,7 @@ const Location = (props) => {
                 return latLng;
             })
             .then(latLng => {
+                console.log(latLng);
                 setPosition(latLng);
             })
             .catch(error => console.error('Error', error));
@@ -124,7 +125,6 @@ const Location = (props) => {
                                     //     suggestion
                                     // })
                                     .map((suggestion, key) => {
-                                    console.log(suggestion);
                                     const className = suggestion.active
                                         ? 'suggestion-item--active custom-dropdown-item'
                                         : 'suggestion-item custom-dropdown-item';

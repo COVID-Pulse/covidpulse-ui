@@ -2,12 +2,12 @@ import React from 'react';
 import BottomNavigation from "@material-ui/core/BottomNavigation/index";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction/index";
 import {Link} from "react-router-dom";
-import { LocationOn, DeveloperBoard, AddCircleOutline, TrendingUp } from "@material-ui/icons";
+import {DeveloperBoard, LocationOn, TrendingUp} from "@material-ui/icons";
 import "../../styles/navbar.css"
 
 const NavBar = () => {
 
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = React.useState(1);
 
     const routes = [ {
         path: "/feeds",
