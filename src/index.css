@@ -64,6 +64,8 @@ a, u {
   top: 20px;
   bottom: 58px;
   overflow: auto;
+  right: 0;
+  left: 0;
 }
 ._wrapper.centered{
   display: flex;

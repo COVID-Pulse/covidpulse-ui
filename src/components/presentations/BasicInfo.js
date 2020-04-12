@@ -40,10 +40,9 @@ const BasicInfo = (props) => {
     };
 
     return (
-        <div>
-
+        <div style={{width : "100%"}}>
             <Paper elevation={0} >
-                <h3 className={"_title"}>
+                <h3 className={"_title"} style={{padding : "0 24px"}}>
                     <div>Basic Info</div>
                 </h3>
                 <div className={"_subtitle"}>Please provide the details about the patient</div>

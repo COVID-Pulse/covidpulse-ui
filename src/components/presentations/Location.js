@@ -93,8 +93,8 @@ const Location = (props) => {
     };
 
     return (
-        <div>
-            <div className={"_title"}>
+        <div style={{width : "100%"}}>
+            <div className={"_title"} style={{padding : "0 24px"}}>
                 <div style={{fontSize: "x-large"}}>Location Info</div>
             </div>
             <div className="_subtitle">
@@ -154,7 +154,7 @@ const Location = (props) => {
                 <MapComponent height={"250px"} width={"100%"} position={position}/>
             </div>
             
-            <div className={"btn-cont"} style={{ justifyContent : 'space-around' }}>
+            <div className={"btn-cont"} style={{ justifyContent : 'space-between', padding : '0 24px' }}>
                 <Button onClick={() => goBack()} style={{background: "#dfe0e0"}}>
                     Back
                 </Button>

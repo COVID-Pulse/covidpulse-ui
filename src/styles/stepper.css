@@ -4,10 +4,11 @@
 }
 
 ._stepper-wrapper {
-    height: calc(86vh - 16px);
-    margin: 32px 16px 16px;
-    position: relative;
-    top: 0;
+    padding: 32px 16px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .stepper-cont{
