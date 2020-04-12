@@ -56,7 +56,7 @@ const LocationSearchInput = (props) => {
                             id={"input-attr"}
                             value={address}
                             {...getInputProps({
-                                placeholder: 'Search Google Maps'
+                                placeholder: 'Search Hotspots'
                             })}
                         />
                         <IconButton style={{display: address && address.trim().length !== 0 ? "block" : "none"}}
