@@ -7,7 +7,7 @@ const google = window.google;
 
 const MapComponent = (props) => {
 
-    const [displayBadge, setDisplayBadge] = useState(true);
+    const [displayBadge, setDisplayBadge] = useState(false);
 
     const Marker = () => <LocationOn className={"location-pointer"}/>;
 
@@ -45,19 +45,82 @@ const MapComponent = (props) => {
         }
     }
 
+
+    const toggleBounce = (marker) => {
+        if (marker.getAnimation() !== null) {
+          marker.setAnimation(null);
+        } else {
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+          setTimeout( () => {
+            marker.setAnimation(null);
+          }, 500)
+        }
+    }
+
+    const getCircleMarker = (hotspot, map) => {
+        const marker = new google.maps.Circle({
+            strokeColor: '#f5005696',
+            strokeOpacity: 0.0,
+            strokeWeight: 2,
+            fillColor: '#f5005696',
+            fillOpacity: 0.7,
+            map,
+            center: {lat: parseFloat(hotspot.lat), lng: parseFloat(hotspot.lon)},
+            radius: 1000
+        });
+        marker.addListener('hover', () => {
+            console.log('hovered');
+        });
+        return marker;
+    }
+
+    const getLocMarker = (hotspot, map ) => {
+        const marker = new google.maps.Marker({
+            label: {
+                color : '#fff',
+                fontWeight: '900',
+                text : parseFloat(hotspot.count).toString()
+            },
+            map : map,
+            animation: google.maps.Animation.DROP,
+            position : {lat: parseFloat(hotspot.lat), lng: parseFloat(hotspot.lon)}
+        });
+        marker.addListener('click', (e) => {
+            var contentString = `<div id="content" style="font-size: 12px;padding: 6px;">
+                <div style="font-weight: 600;">
+                    Affected Area
+                </div>
+                <div>
+                   ${hotspot.area} 
+                </div>
+                <div style="font-weight: 600; padding-top: 10px;">
+                    Infected Count
+                </div>
+                <div>
+                   ${hotspot.count} 
+                </div>
+            </div>`
+
+            const infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            infowindow.open(map, marker);
+            toggleBounce(marker) 
+        });
+        return marker; 
+    }
+
     const hostspotzone = (map) => {
         if( props.hotspots &&  props.hotspots.length !== 0) {
-            props.hotspots.map((hotspot, key) =>
-            new google.maps.Circle({
-                strokeColor: '#f5005696',
-                strokeOpacity: 0.0,
-                strokeWeight: 2,
-                fillColor: '#f5005696',
-                fillOpacity: 0.7,
-                map,
-                center: {lat: parseFloat(hotspot.lat), lng: parseFloat(hotspot.lon)},
-                radius: 1000,
-            }));
+            props.hotspots.map((hotspot, i) => {
+                new google.maps.InfoWindow({
+
+                })
+                return<div>
+                    {getCircleMarker(hotspot, map)}
+                    {getLocMarker(hotspot, map)}
+                </div>
+            });
         }
 
     };
@@ -65,19 +128,11 @@ const MapComponent = (props) => {
     return (
         <div style={{height: props.height, width: props.width}}>
             <GoogleMapReact
-                onChange={({zoom}) => {
-                   if(zoom < 13) {
-                       setDisplayBadge(false);
-                   } else {
-                       setDisplayBadge(true);
-                   }
-                }}
                 bootstrapURLKeys={{key: "AIzaSyCCuPYXot_6UOeBPPp4pHVqHVfK_k9SLMY"}}
                 center={props.position ? props.position : locationCenter}
                 zoom={props.zoom}
                 yesIWantToUseGoogleMapApiInternals
-                onGoogleApiLoaded={({map, maps}) => {hostspotzone(map)}}
-            >
+                onGoogleApiLoaded={({map, maps}) => {hostspotzone(map)}}>
                 {marker}
                 {currentLocationPointer}
                 {hotSpotCount}
