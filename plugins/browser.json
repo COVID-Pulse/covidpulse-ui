@@ -9,6 +9,12 @@
   "installed_plugins": {
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.covidpulse.ui"
+    },
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "com.covidpulse.ui"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.covidpulse.ui"
     }
   },
   "dependent_plugins": {}
