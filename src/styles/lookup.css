@@ -6,6 +6,11 @@
 .lookup-section-header {
     color: #717171;
     font-weight: 600;
+    padding: 10px 0px 10px 0px;
+    position: sticky;
+    top: -6px;
+    z-index: 1;
+    font-size: 14px;
 }
 
 
@@ -19,6 +24,10 @@
 .report-divider {
     /*border-right: 1px solid #d2caca;*/
     /*margin-right: -15px;*/
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -31,10 +40,6 @@
 .avatar-details {
     font-size: 15px !important;
     font-weight: 800;
-    position: absolute;
-    top: 50%;
-    margin-top: 50%;
-    text-align: center;
 }
 
 

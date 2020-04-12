@@ -22,6 +22,9 @@ const LookUp = () => {
         reportedByMe: [],
         others: []
     });
+
+    const [scrolling, setscrolling] = useState(false);
+
     useEffect(() => {
         fetchReports();
     }, []);
@@ -59,7 +62,6 @@ const LookUp = () => {
         handleOpen();
         axios.delete("https://covid-pulse-api.herokuapp.com/api/covid19/report/" + id)
             .then((response) => {
-                console.log(response);
                 fetchReports();
             }).then(() => handleClose())
             .catch((error) => {
@@ -68,15 +70,23 @@ const LookUp = () => {
             });
     };
 
+    const handleScroll = (e) => {
+        if ( e.target.scrollTop > 10 )  {
+            setscrolling(true)
+            return;
+        }
+        setscrolling(false)
+    }
+
     return (
         <div>
-            <div className={"_wrapper"}>
+            <div className={"_wrapper"} onScroll={handleScroll} >
                 <Backdrop open={open} style={{zIndex: "9999"}} onClick={handleClose}>
                     <CircularProgress color="inherit"/>
                 </Backdrop>
                 <Paper elevation={0}>
-                    <div className={"_title"}>Lookup Case
-                        <Button component={Link} to={"/report"} style={{float: "right"}} className={"report-case-but"}
+                    <div className={scrolling ? ' onscroll _title float-top' : '_title float-top'  }>Lookup Case
+                        <Button size="small" component={Link} to={"/report"} style={{float: "right"}} className={"report-case-but"}
                                 variant="outlined" color="primary">
                             <span className={"add-icon"}>+</span> Report Case
                         </Button>

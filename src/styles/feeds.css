@@ -1,21 +1,44 @@
 
-
-
-
 .feeds-wrapper{
     position: fixed;
     left: 0;
     right: 0;
     background: #f7f8fb;
-    top: 0;
+    top: 30px;
     bottom: 36px;
     overflow: auto;
-    padding: 20px;
+    padding: 20px 0px 20px 0px;
+}
+
+.feeds-wrapper  .MuiCardHeader-title{
+    font-weight: 600 !IMPORTANT;
+}
+
+.feeds-wrapper .MuiButtonBase-root{
+    color: #000000a3;
+}
+
+.MuiCardContent-root {
+    padding: 0px 16px 16px !important;
+}
+
+.feeds-wrapper.centered{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .feeds-wrapper::-webkit-scrollbar {
     width: 0px;  /* Remove scrollbar space */
     background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+.MuiCardActions-root{
+    justify-content: space-between;
+}
+
+.MuiTypography-root{
+    word-break:  break-word;
 }
 
 .feed-detail {
@@ -27,8 +50,9 @@
 
 .feed-detail .summary-cont{
     display: flex;
-    color: #8e6eb2;
+    color: #607D8B;
     font-size: 14px;
+    font-weight: 600;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -47,7 +71,7 @@
 
 .feed-detail .credits{
     text-align: right;
-    color: #8e6eb2;
+    color: black;
     padding-top: 10px;
 }
 
