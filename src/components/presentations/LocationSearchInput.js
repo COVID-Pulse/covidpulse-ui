@@ -6,7 +6,7 @@ import IconButton from "@material-ui/core/IconButton";
 import InputBase from "@material-ui/core/InputBase";
 import CloseIcon from '@material-ui/icons/Close';
 import {makeStyles} from '@material-ui/core/styles';
-
+import { Search } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -51,6 +51,7 @@ const LocationSearchInput = (props) => {
             {({getInputProps, suggestions, getSuggestionItemProps}) => (
                 <div className={"location-search-container"}>
                     <Paper className={classes.root}>
+                        <Search className={"search-icon"}/>
                         <InputBase
                             className={classes.input}
                             id={"input-attr"}

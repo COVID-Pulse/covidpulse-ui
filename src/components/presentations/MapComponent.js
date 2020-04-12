@@ -113,9 +113,6 @@ const MapComponent = (props) => {
     const hostspotzone = (map) => {
         if( props.hotspots &&  props.hotspots.length !== 0) {
             props.hotspots.map((hotspot, i) => {
-                new google.maps.InfoWindow({
-
-                })
                 return<div>
                     {getCircleMarker(hotspot, map)}
                     {getLocMarker(hotspot, map)}

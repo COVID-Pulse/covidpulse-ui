@@ -118,3 +118,9 @@ a, u {
   left: 50%;
   transform: translate(-50%, 0);
 }
+
+
+.search-icon {
+  margin: 0px 0px 1px 10px;
+  color: #637182;
+}
