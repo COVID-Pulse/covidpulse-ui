@@ -60,8 +60,8 @@ const LocationSearchInput = (props) => {
                             })}
                         />
                         <IconButton style={{display: address && address.trim().length !== 0 ? "block" : "none"}}
-                                    className={classes.iconButton} type="submit" aria-label="search">
-                            <CloseIcon onClick={() => setAddress("")}/>
+                                    className={classes.iconButton} type="submit" aria-label="search" onClick={() => setAddress("")}>
+                            <CloseIcon/>
                         </IconButton>
                     </Paper>
                     <div className="autocomplete-dropdown-container custom-dropdown-style">

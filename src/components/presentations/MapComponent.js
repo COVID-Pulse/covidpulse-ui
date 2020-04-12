@@ -21,7 +21,7 @@ const MapComponent = (props) => {
     let isHotSpotAvailable = props.hotspots && props.hotspots.length !== 0;
     const defaultMarker = !props.position && !(isHotSpotAvailable) ? <Marker className={"location-pointer"} lat={13.0827} lng={80.2707}/> : "";
 
-    const hotSpotCount = isHotSpotAvailable ? props.hotspots.map(hotspot => <HostSpotCount lat={hotspot.lat} lng={hotspot.lon} count={hotspot.count} /> ) :  "";
+    const hotSpotCount = isHotSpotAvailable ? props.hotspots.map((hotspot, key) => <HostSpotCount key={key} lat={hotspot.lat} lng={hotspot.lon} count={hotspot.count} /> ) :  "";
 
     let locationCenter = {
         lat: 13.0827,

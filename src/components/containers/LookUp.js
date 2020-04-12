@@ -75,7 +75,7 @@ const LookUp = () => {
             return;
         }
         setscrolling(false)
-    }
+    };
 
     return (
         <div>
