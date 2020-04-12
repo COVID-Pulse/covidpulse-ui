@@ -30,6 +30,7 @@ const Hotspots = () => {
     }, []);
 
     const getPosition = async () => {
+        handleClose();
         await navigator.geolocation.getCurrentPosition(
             position => {
                 handleClose();

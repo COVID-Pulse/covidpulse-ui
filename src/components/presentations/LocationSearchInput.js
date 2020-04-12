@@ -53,6 +53,7 @@ const LocationSearchInput = (props) => {
                     <Paper className={classes.root}>
                         <InputBase
                             className={classes.input}
+                            id={"input-attr"}
                             value={address}
                             {...getInputProps({
                                 placeholder: 'Search Google Maps'
