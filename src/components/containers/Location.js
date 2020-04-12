@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import MapComponent from "./MapComponent";
+import MapComponent from "../presentations/MapComponent";
 import PlacesAutocomplete, { geocodeByAddress, getLatLng,} from 'react-places-autocomplete';
 import Divider from "@material-ui/core/Divider/index";
 import Button from "@material-ui/core/Button/index";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import CircularProgress from "@material-ui/core/CircularProgress/index";
 import "../../styles/location.css";
 
 const Location = (props) => {
@@ -117,15 +117,11 @@ const Location = (props) => {
                                 value={address}
                             />
                             <div className="autocomplete-dropdown-container custom-dropdown-style">
-
-
-                                {loading && <div>Loading...</div>}
                                 {suggestions
                                     .map((suggestion, key) => {
                                     const className = suggestion.active
                                         ? 'suggestion-item--active custom-dropdown-item'
                                         : 'suggestion-item custom-dropdown-item';
-                                    // inline style for demonstration purpose
                                     const style = suggestion.active
                                         ? { backgroundColor: '#fafafa', cursor: 'pointer' }
                                         : { backgroundColor: '#ffffff', cursor: 'pointer' };
@@ -148,7 +144,7 @@ const Location = (props) => {
                         </div>
                     )}
                 </PlacesAutocomplete>
-                <MapComponent height={"250px"} width={"100%"} position={position}/>
+                <MapComponent height={"250px"} width={"100%"} position={position} showMarker={true} zoom={13}/>
             </div>
             
             <div className={"btn-cont"} style={{ justifyContent : 'space-between', padding : '0 24px' }}>

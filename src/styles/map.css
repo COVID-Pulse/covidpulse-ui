@@ -1,0 +1,49 @@
+.location-pointer {
+    color: #bd4949;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.outer-circle {
+    background: #bfd4fbcf;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    position: relative;
+}
+
+
+.inner-circle {
+    width: 10px;
+    height: 10px;
+    border: 1px solid white;
+    background: #4285f4;
+    border-radius: 100%;
+    position: relative;
+    left: 22%;
+    top: 25%;
+}
+
+
+.reposition-but {
+    position: fixed !important;
+    z-index: 9999;
+    background: white !important;
+    color: #666666 !important;
+    min-width: 0px !important;
+    padding: 5px;
+    right: 10px;
+    bottom: 150px;
+}
+
+.reposition-but:hover {
+    color: #4285f4 !important;
+}
+
+
+.gm-fullscreen-control {
+    /*position: fixed !important;*/
+    /*bottom: 90px !important;*/
+    display: none;
+}

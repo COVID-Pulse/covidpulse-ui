@@ -95,3 +95,26 @@ a, u {
 .onscroll {
   box-shadow: 0px 1px 10px #999;
 }
+
+
+.auto-complete {
+  margin: 20px 0px;
+  position: relative;
+}
+
+.custom-dropdown-style  {
+  position: absolute;
+  z-index: 9999;
+  background: white;
+  width: 100%;
+  border: 1px solid #ced4da;
+  border-top: none;
+}
+
+.location-search-container {
+  position: fixed;
+  z-index: 999;
+  top: 2%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}

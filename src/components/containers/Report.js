@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import BasicInfo from "../presentations/BasicInfo";
-import Location from "../presentations/Location";
+import Location from "./Location";
 import "../../styles/stepper.css"
 import axios from 'axios';
 import {AXIOS_CONFIGS} from "../../configs/axios-configs";

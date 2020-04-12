@@ -1,17 +1,17 @@
 import React from 'react';
 import GoogleMapReact from "google-map-react";
 import {LocationOn} from "@material-ui/icons";
-
-const Marker = () => <LocationOn style={{color: "#bd4949"}}/>;
+import "../../styles/map.css";
 
 const google = window.google;
 
 const MapComponent = (props) => {
 
-    const Marker = () => <LocationOn
-        style={{color: "#bd4949", textAlign: "center", transform: "translate(-50%, -50%)", position: "absolute"}}/>;
+    const Marker = () => <LocationOn className={"location-pointer"}/>;
 
-    const marker = props.position ? <Marker lat={props.position.lat} lng={props.position.lng}/> : "";
+    const CurrentLocationPointer = () => <div className={"location-pointer outer-circle"}> <div className={"inner-circle"}/></div> ;
+
+    const marker = props.position && props.showMarker ? <Marker lat={props.position.lat} lng={props.position.lng}/> : "";
 
 
     const defaultMarker = !props.position && !(props.hotspots && props.hotspots.length !== 0) ? <Marker lat={13.0827} lng={80.2707}/> : "";
@@ -21,11 +21,16 @@ const MapComponent = (props) => {
         lng: 80.2707
     };
 
+    let currentLocationPointer = "";
+
     if(props.currentLocation && props.currentLocation.lat && props.currentLocation.lng ) {
         locationCenter = {
             lat: props.currentLocation.lat,
             lng: props.currentLocation.lng
-        }
+        };
+
+        currentLocationPointer = <CurrentLocationPointer lat={props.currentLocation.lat} lng={props.currentLocation.lng}/>
+
     } else if(props.hotspots && props.hotspots.length !== 0) {
         locationCenter = {
             lat: parseFloat(props.hotspots[0].lat),
@@ -55,11 +60,12 @@ const MapComponent = (props) => {
             <GoogleMapReact
                 bootstrapURLKeys={{key: "AIzaSyCCuPYXot_6UOeBPPp4pHVqHVfK_k9SLMY"}}
                 center={props.position ? props.position : locationCenter}
-                zoom={13}
+                zoom={props.zoom}
                 yesIWantToUseGoogleMapApiInternals
                 onGoogleApiLoaded={({map, maps}) => {hostspotzone(map)}}
             >
                 {marker}
+                {currentLocationPointer}
                 {defaultMarker}
             </GoogleMapReact>
         </div>
