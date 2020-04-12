@@ -58,7 +58,6 @@ const LookUp = () => {
     };
 
     const deleteReports = (id) => {
-        console.log(id);
         handleOpen();
         axios.delete("https://covid-pulse-api.herokuapp.com/api/covid19/report/" + id)
             .then((response) => {
