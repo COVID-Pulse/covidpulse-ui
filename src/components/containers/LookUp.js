@@ -79,7 +79,7 @@ const LookUp = () => {
 
     return (
         <div>
-            <div className={"_wrapper"} onScroll={handleScroll} >
+            <div className={"_wrapper"} onScroll={handleScroll} style={{ backgroundColor : "#f7f8fb"}} >
                 <Backdrop open={open} style={{zIndex: "9999"}} onClick={handleClose}>
                     <CircularProgress color="inherit"/>
                 </Backdrop>

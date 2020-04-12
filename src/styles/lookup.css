@@ -42,21 +42,32 @@
     font-weight: 800;
 }
 
+.section-wrapper{
+    margin-bottom: 10px;
+}
 
 .section-label {
-    font-size: 12px;
+    font-size: 14px;
     margin-right: 10px;
-    color: #8a8a8a;
+    text-transform: capitalize;
+    color: #3b2f63;
+}
+
+.section-value {
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .section-header {
     font-weight: bold;
-    font-size: 17px;
+    font-size: 16px;
 }
 
 
 .section-chip {
     font-size: 13px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 

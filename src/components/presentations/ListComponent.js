@@ -6,7 +6,7 @@ import Divider from "@material-ui/core/Divider";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
 import Chip from "@material-ui/core/Chip";
-import {Delete} from "@material-ui/icons";
+import {Delete, HighlightOff } from "@material-ui/icons";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -54,20 +54,19 @@ const ListComponent = (props) => {
     return (
         <div>
             {props.reports && props.reports.length !== 0 ?
-                <Card>
-                    {props.reports.map((report, key) => (
-                        <div key={key}>
-                            <Grid container spacing={3} className={"grid-container"}>
-                                    <Grid item xs={2}>
-                                        <div className={"report-divider"}>
-                                            <Avatar className={"avatar-details"} style={{opacity: ".9", backgroundColor: colorPalette[Math.floor(Math.random() * (4))]}}>P{report.id}</Avatar>
-                                        </div>
-                                    </Grid>
+                props.reports.map((report, key) => (
+                    <Card className="section-wrapper" key={key}>
+                        <Grid container className={"grid-container"}>
+                                <Grid item xs={2}>
+                                    <div className={"report-divider"}>
+                                        <Avatar className={"avatar-details"} style={{opacity: ".9", backgroundColor: colorPalette[Math.floor(Math.random() * (4))]}}>P{report.id}</Avatar>
+                                    </div>
+                                </Grid>
                                 <Grid item xs={10}>
-                                    <Grid container>
-                                        <Grid item xs={12}>
+                                    <Grid container style={{ paddingLeft : "10px" }} >
+                                        <Grid item xs={12} style={{ paddingBottom : "8px" }} >
                                             <span className={"section-header"}>Patient - {report.id}</span>
-                                            { props.byMyself ? <Delete className={"delete"} onClick={() => handleClickOpen(report.id)}/> : <div/>}
+                                            { props.byMyself ? <HighlightOff style={{ position : "absolute" , right : 0 }} className={"delete"} onClick={() => handleClickOpen(report.id)}/> : <div/>}
                                         </Grid>
                                         <Grid item xs={4}>
                                             <span className={"section-label"}>age</span>
@@ -79,15 +78,13 @@ const ListComponent = (props) => {
                                         </Grid>
                                         <Grid item xs={12} style={{marginTop: "10px"}}>
                                             <span className={"section-label"}>symptoms</span>
-                                            <span className={"section-chip"}>{report.symptom.split(",").map((s, k) => <Chip key={k} label={s} style={{marginRight: "5px"}} />)}</span>
+                                            <span className={"section-chip"}>{report.symptom.split(",").map((s, k) => <Chip key={k} color="primary" variant="outlined" label={s} style={{marginRight: "5px"}} />)}</span>
                                         </Grid>
                                     </Grid>
                                 </Grid>
                             </Grid>
-                            <Divider/>
-                        </div>
-                    ))}
-                </Card>
+                    </Card>
+                ))
                 :
                 <Card className={"no-data-card"}>
                     <img src={glass}/>
