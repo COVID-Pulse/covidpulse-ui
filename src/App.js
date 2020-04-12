@@ -17,8 +17,8 @@ function App() {
                 <Route path="/hotspots" component={Hotspots}/>
                 <Route path="/feeds" component={Feeds} />
                 <Route path="/report" component={Report} />
-                <Route path="/loopkup" component={LookUp} />
-                <Redirect from={"/"} to={"/feeds"}/>
+                <Route path="/lookup" component={LookUp} />
+                <Redirect from={"/"} to={"/report"}/>
                 <NavBar/>
             </div>
         </Router>

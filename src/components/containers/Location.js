@@ -82,9 +82,6 @@ const Location = (props) => {
             .catch(error => console.error('Error', error));
     };
 
-    const goBack = () => {
-        props.updateStepper();
-    };
 
     const completeInfo = () => {
         locationInfo["lat"] = position.lat;
@@ -147,12 +144,10 @@ const Location = (props) => {
                 <MapComponent height={"250px"} width={"100%"} position={position} showMarker={true} zoom={13}/>
             </div>
             
-            <div className={"btn-cont"} style={{ justifyContent : 'space-between', padding : '0 24px' }}>
-                <Button onClick={() => goBack()} style={{background: "#dfe0e0"}}>
-                    Back
-                </Button>
-
-                <Button variant="contained" color="primary" className={"_button"} disabled={props.loading} onClick={completeInfo.bind(this)} >
+            <div className={"btn-cont"} style={{ justifyContent : 'justify-center', padding : '0 24px' }}>
+                <Button variant="contained" color="primary" className={"_button"} 
+                    disabled={props.loading || locationInfo.state === '' || locationInfo.country === '' || locationInfo.city === ''} 
+                    onClick={completeInfo.bind(this)} >
                     {props.loading ? <CircularProgress size={20} color={"secondary"}/> : "Complete"}
                 </Button>
             </div>

@@ -18,7 +18,7 @@ const NavBar = () => {
         label: "HotSpots",
         component: <LocationOn />
     },{
-        path: "/loopkup",
+        path: "/lookup",
         label: "LookUp Case",
         component: <DeveloperBoard />
     }];

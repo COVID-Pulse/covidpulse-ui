@@ -20,8 +20,7 @@ const  getIp = async () => {
 if (window.cordova) {
     document.addEventListener('deviceready', () => {
         const deviceDetails = document.getElementById('deviceProperties');
-        //localStorage.setItem("deviceId", deviceDetails.id);
-        localStorage.setItem("deviceId", "test");
+        localStorage.setItem("deviceId", deviceDetails.id);
         renderReactDom();
     }, false);
 } else {

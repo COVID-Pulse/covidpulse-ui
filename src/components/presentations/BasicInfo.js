@@ -9,6 +9,19 @@ import {InputLabel, Paper, TextField, Snackbar} from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import AutoCompleteChip from './autocomplete-chip';
 
+const symptoms = [
+    { label : 'cough' }, 
+    { label : 'fever' }, 
+    { label : 'tiredness' }, 
+    { label : 'Shortness of breath' },
+    { label : 'Persistent pain or pressure in the chest' },
+    { label : 'New confusion or inability to arouse' },
+    { label : 'Bluish lips or face' },
+    { label : 'Trouble breathing' },
+    
+]
+
+
 const BasicInfo = (props) => {
 
     const [basicInfo, setBasicInfo] = useState({
@@ -106,7 +119,7 @@ const BasicInfo = (props) => {
                     </FormControl>
                 </div>
 
-                <AutoCompleteChip onChange={handleOnChange} label="Patient Symptoms" data={[{'label' : 'Fever'}, { 'label' : 'Cough' }, { 'label' : 'Stomach Pain'}]} ></AutoCompleteChip>
+                <AutoCompleteChip onChange={handleOnChange} label="Patient Symptoms" data={symptoms} ></AutoCompleteChip>
 
                 <div className="btn-cont">
                     <Button disabled={!formValid} variant="contained" color="primary" className={"_button"} onClick={() => updateParentInfo()}>

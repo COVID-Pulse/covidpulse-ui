@@ -2,11 +2,10 @@ import React, {useState} from 'react';
 import '../../styles/lookup.css';
 import Card from "@material-ui/core/Card";
 import glass from '../../assets/icons/glass.svg'
-import Divider from "@material-ui/core/Divider";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
 import Chip from "@material-ui/core/Chip";
-import {Delete, HighlightOff } from "@material-ui/icons";
+import {HighlightOff } from "@material-ui/icons";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -87,7 +86,7 @@ const ListComponent = (props) => {
                 ))
                 :
                 <Card className={"no-data-card"}>
-                    <img src={glass}/>
+                    <img src={glass} alt=""  />
                     <div>No reports found :)</div>
                 </Card>
             }

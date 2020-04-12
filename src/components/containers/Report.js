@@ -5,8 +5,13 @@ import "../../styles/stepper.css"
 import axios from 'axios';
 import {AXIOS_CONFIGS} from "../../configs/axios-configs";
 
+import { useHistory } from "react-router-dom";
+
+
 const Report = () => {
 
+    const history = useHistory();
+    
     const [stepperIndex, setStepperIndex] = useState(0);
 
     const [loading, setLoading] = useState(false);
@@ -52,14 +57,13 @@ const Report = () => {
         setLoading(true);
         axios.post("https://covid-pulse-api.herokuapp.com/api/covid19/report/", payload, AXIOS_CONFIGS)
             .then((result) => {
-                console.log(result);
-                decreaseStepper();
+                history.push("/lookup");
             }).catch((error) => {
                 console.log(error);
         }).finally(() => {
             setLoading(false);
         });
-        console.log(payload);
+
     };
 
     const stepperComponents = [
