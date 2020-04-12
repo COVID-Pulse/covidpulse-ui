@@ -119,8 +119,18 @@ a, u {
   transform: translate(-50%, 0);
 }
 
+.location-search-container svg {
+    right: 20px;
+    top: 14px;
+}
+
+.location-search-container input {
+  width: 86%;
+}
 
 .search-icon {
-  margin: 0px 0px 1px 10px;
-  color: #637182;
+  color: #a3a3a3;
+  right: 20px;
+  position: absolute;
+  top: 14px;
 }

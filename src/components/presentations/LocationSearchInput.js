@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
         margin: "0 auto"
     },
     input: {
-        marginLeft: theme.spacing(1),
+        marginLeft: '15px',
         flex: 1,
         padding: "6px 0px"
     },
@@ -51,7 +51,7 @@ const LocationSearchInput = (props) => {
             {({getInputProps, suggestions, getSuggestionItemProps}) => (
                 <div className={"location-search-container"}>
                     <Paper className={classes.root}>
-                        <Search className={"search-icon"}/>
+                        <Search style={{display: address && address.trim().length !== 0 ? "none" : "block"}} className={"search-icon"}/>
                         <InputBase
                             className={classes.input}
                             id={"input-attr"}

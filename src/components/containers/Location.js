@@ -36,22 +36,23 @@ const Location = (props) => {
         };
 
         address_components.map( address_component => {
-            if (address_component.types[0] === "political") {
-                updateLocationData.area = address_component.long_name;
-            }
-
-            if (address_component.types[0] === "locality") {
-                updateLocationData.city = address_component.long_name;
-            }
-
-            if (address_component.types[0] === "administrative_area_level_1") {
-                updateLocationData.state = address_component.short_name;
-            }
-
-            if (address_component.types[0] === "country") {
-                updateLocationData.country = address_component.long_name;
-
-            }
+            address_component.types.map( (typ) => {
+                if ( typ === "political" ) {
+                    updateLocationData.area = address_component.long_name;
+                }
+    
+                if ( typ === "locality" ) {
+                    updateLocationData.city = address_component.long_name;
+                }
+    
+                if ( typ === "administrative_area_level_1" ) {
+                    updateLocationData.state = address_component.short_name;
+                }
+    
+                if ( typ === "country" ) {
+                    updateLocationData.country = address_component.long_name;
+                }
+            })
             return true;
         });
         return updateLocationData;
@@ -64,7 +65,6 @@ const Location = (props) => {
                 const data = results[0];
                 const latLng = getLatLng(data);
                 const updateLocationData = updateLocation(data);
-
                 setLocationInfo({
                     ...Location,
                     state : updateLocationData.state,

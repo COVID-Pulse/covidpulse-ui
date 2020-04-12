@@ -79,11 +79,19 @@ const BasicInfo = (props) => {
             basicInfo.age === '' || 
             ( typeof(basicInfo.age) === "string" && basicInfo.age.trim().length === 0 )
         ) { return; }
+
+        if ( 
+            basicInfo.symptom === '' || basicInfo.symptom.trim().length === 0
+        ) {
+            return;
+        }
+
         setFormValid(true);
     }
 
     const handleOnChange = (value) => {
         basicInfo.symptom = value.map( (v) => v.label ).toString();
+        setBasicInfo({...basicInfo});
     }
 
     const handleClose = () => setErrorMessage('');
