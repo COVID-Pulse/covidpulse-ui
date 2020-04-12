@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
-import { Card, CardMedia, Typography, CardContent, CardActionArea, Drawer, SwipeableDrawer, GridList, GridListTile, CircularProgress, CardActions, Button, CardHeader, Avatar } from '@material-ui/core';
+import { Card, CardMedia, Typography, CardContent, CardActionArea, SwipeableDrawer, CircularProgress, CardActions, Button, CardHeader, Avatar } from '@material-ui/core';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 
 import Axios from 'axios';
 import { makeStyles } from '@material-ui/styles';
 
 import "../../styles/feeds.css";
-import { Share, ThumbUp } from '@material-ui/icons';
+import { Share } from '@material-ui/icons';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const APIURL = 'https://covid-pulse-api.herokuapp.com/api/covid19/';
@@ -25,10 +25,29 @@ function nFormatter(num) {
     return num;
 }
 
+function timeSince(timeStamp) {
+    var now = new Date(),
+      secondsPast = (now.getTime() - timeStamp) / 1000;
+    if (secondsPast < 60) {
+      return parseInt(secondsPast) + 's ago';
+    }
+    if (secondsPast < 3600) {
+      return parseInt(secondsPast / 60) + 'm ago';
+    }
+    if (secondsPast <= 86400) {
+      return parseInt(secondsPast / 3600) + 'h ago';
+    }
+    if (secondsPast > 86400) {
+      let day = timeStamp.getDate();
+      let month = timeStamp.toDateString().match(/ [a-zA-Z]*/)[0].replace(" ", "");
+      let year = timeStamp.getFullYear() == now.getFullYear() ? "" : " " + timeStamp.getFullYear();
+      return  "on " + day + " " + month + year;
+    }
+}
+
 const useStyles = makeStyles((theme) => ({
     card: {
-        margin: '10px',
-        // boxShadow: '0px 0px 0px -3px rgba(0,0,0,0.2), -2px 2px 9px 1px rgba(0,0,0,0.14), 0px 0px 9px 0px rgba(0,0,0,0.12)'
+        margin: '10px'
     },
     media: {
         height: 150,
@@ -56,8 +75,7 @@ const Feeds = () => {
     const [scrolling, setscrolling] = useState(false);
 
     useEffect(() => {
-        const today = new Date();
-        Axios.get(APIURL + `feeds/?page=${pageNo}&ordering=-likes`)
+        Axios.get(APIURL + `feeds/?page=${pageNo}&ordering=-created_at,-likes,-timestamp`)
             .then((data) => {
                 setFeeds(data.data.results);
             }).catch((error) => {
@@ -92,7 +110,7 @@ const Feeds = () => {
                 <Avatar aria-label="recipe" src={ "https://avatars.io/twitter/" + feed.username } className={classes.avatar}>
                     
                 </Avatar>
-                } title={feed.by} subheader={feed.created_at} >
+                } title={feed.by} subheader={timeSince(new Date(feed.timestamp))} >
             </CardHeader>
                 <CardContent>
                     <Typography variant="body2" color="textSecondary" component="p">
@@ -147,7 +165,6 @@ const Feeds = () => {
                         <div className="summary-cont">
                             <div className="likes"><FavoriteIcon color="secondary" ></FavoriteIcon> {nFormatter(selectedFeed.likes)}</div>
                             <div className="shares"><Share></Share> {nFormatter(selectedFeed.shared)}</div>
-                            <div className="created-date"><DateRangeIcon></DateRangeIcon> {selectedFeed.created_at}</div>
                         </div>
                         {selectedFeed.hasmedia ?
                         <div className="img-holders">

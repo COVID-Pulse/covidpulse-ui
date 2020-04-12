@@ -97,7 +97,7 @@ const BasicInfo = (props) => {
                 </div>
                 <div className={"form-space"}>
                     <FormControl component="fieldset">
-                        <InputLabel for="gender">Gender</InputLabel>
+                        <InputLabel>Gender</InputLabel>
                         <RadioGroup row aria-label="position" name="position" id={"gender"} defaultValue="top" onChange={updateGender.bind(this)}>
                             <FormControlLabel value="M" control={<Radio color="primary" />} label={<span className={"gender"}>Male</span>}/>
                             <FormControlLabel value="F" control={<Radio color="primary" />} label={<span className={"gender"}>Female</span>}/>
