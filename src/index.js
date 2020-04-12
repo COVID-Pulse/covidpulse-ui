@@ -12,10 +12,11 @@ const renderReactDom = () => {
 
 
 const  getIp = async () => {
-    await publicIp.v4().then(data => {
-        localStorage.setItem("deviceId", data);
-    });
+    const data = await publicIp.v4();
+    localStorage.setItem("deviceId", data);
+    return data;
 }
+
 if (window.cordova) {
     document.addEventListener('deviceready', () => {
         const deviceDetails = document.getElementById('deviceProperties');
@@ -23,6 +24,8 @@ if (window.cordova) {
         renderReactDom();
     }, false);
 } else {
-     getIp();
+    getIp().then( 
+        (ip) => console.log(ip)
+    ).catch( (e) => console.log('Error occured getting device Id') )
     renderReactDom();
 }

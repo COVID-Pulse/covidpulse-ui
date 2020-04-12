@@ -94,7 +94,7 @@ const LookUp = () => {
 
                 </Paper>
                 <div className={"lookup-container"}>
-                    <div className={"lookup-section-header"}>Report by me</div>
+                    <div className={"lookup-section-header"}>Reported by me</div>
                     <ListComponent reports={lookUp.reportedByMe} byMyself={true}
                                    deleteReport={deleteReports.bind(this)}/>
                 </div>

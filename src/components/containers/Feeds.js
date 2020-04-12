@@ -113,7 +113,7 @@ const Feeds = () => {
     }
 
     const handleOnCose = (cl) => {
-        console.log(cl)
+        
     }
 
     const handleScroll = (e) => {

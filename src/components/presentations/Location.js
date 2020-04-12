@@ -121,9 +121,6 @@ const Location = (props) => {
 
                                 {loading && <div>Loading...</div>}
                                 {suggestions
-                                    // .filter(suggestion => {
-                                    //     suggestion
-                                    // })
                                     .map((suggestion, key) => {
                                     const className = suggestion.active
                                         ? 'suggestion-item--active custom-dropdown-item'
