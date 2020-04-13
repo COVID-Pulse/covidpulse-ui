@@ -17,6 +17,7 @@
     "cordova-browser": "^6.0.0",
     "cordova-plugin-android-permissions": "^1.0.2",
     "cordova-plugin-device": "^2.0.3",
+    "cordova-plugin-splashscreen": "^5.0.3",
     "google-map-react": "^1.1.7",
     "jsx-control-statements": "^3.2.8",
     "public-ip": "^4.0.1",
@@ -62,7 +63,8 @@
     "plugins": {
       "cordova-plugin-whitelist": {},
       "cordova-plugin-android-permissions": {},
-      "cordova-plugin-device": {}
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {}
     },
     "platforms": [
       "android",

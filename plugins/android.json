@@ -15,6 +15,9 @@
     },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "com.covidpulse.ui"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.covidpulse.ui"
     }
   },
   "dependent_plugins": {}
