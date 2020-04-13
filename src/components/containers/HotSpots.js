@@ -6,6 +6,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Button from "@material-ui/core/Button";
 import {GpsFixed} from "@material-ui/icons";
 import LocationSearchInput from "../presentations/LocationSearchInput";
+import { APIURL } from '../../configs/app-config';
 
 const Hotspots = () => {
 
@@ -48,7 +49,7 @@ const Hotspots = () => {
 
     const fetchHotspots = () => {
         handleOpen();
-        axios.get("https://covid-pulse-api.herokuapp.com/api/covid19/hotspots")
+        axios.get( APIURL + "hotspots")
             .then((response) => {
                 setHotSpots(response.data.results);
             }).then(() => getPosition())

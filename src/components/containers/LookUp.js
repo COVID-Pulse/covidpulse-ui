@@ -6,6 +6,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import {Link} from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import { APIURL } from '../../configs/app-config';
 
 const LookUp = () => {
 
@@ -32,7 +33,7 @@ const LookUp = () => {
 
     const fetchReports = () => {
         handleOpen();
-        axios.get("https://covid-pulse-api.herokuapp.com/api/covid19/report")
+        axios.get( APIURL + "report")
             .then((response) => {
                 let respReportByMe = [];
                 let respOthers = [];
@@ -59,7 +60,7 @@ const LookUp = () => {
 
     const deleteReports = (id) => {
         handleOpen();
-        axios.delete("https://covid-pulse-api.herokuapp.com/api/covid19/report/" + id)
+        axios.delete(APIURL + "report/" + id)
             .then((response) => {
                 fetchReports();
             }).then(() => handleClose())

@@ -77,7 +77,7 @@ const ListComponent = (props) => {
                                         </Grid>
                                         <Grid item xs={12} style={{marginTop: "10px"}}>
                                             <span className={"section-label"}>symptoms</span>
-                                            <span className={"section-chip"}>{report.symptom.split(",").map((s, k) => <Chip key={k} color="primary" variant="outlined" label={s} style={{marginRight: "5px"}} />)}</span>
+                                            <span className={"section-chip"}>{report.symptom.split(",").map((s, k) => <Chip key={k} color="primary" variant="outlined" label={s} style={{marginRight: "5px", marginBottom : "5px", textTransform : "capitalize"}} />)}</span>
                                         </Grid>
                                     </Grid>
                                 </Grid>

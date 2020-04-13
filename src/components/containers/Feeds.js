@@ -8,11 +8,11 @@ import { makeStyles } from '@material-ui/styles';
 import "../../styles/feeds.css";
 import { Share } from '@material-ui/icons';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import { APIURL } from '../../configs/app-config';
 
 
 const $ = window.$;
 
-const APIURL = 'https://covid-pulse-api.herokuapp.com/api/covid19/';
 
 function nFormatter(num) {
     if (num >= 1000000000) {

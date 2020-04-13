@@ -6,10 +6,12 @@
 .lookup-section-header {
     color: #717171;
     font-weight: 600;
-    padding: 10px 0px 10px 0px;
+    padding: 10px 8px 10px 9px;
+    position: -webkit-sticky;
     position: sticky;
     top: -10px;
-    z-index: 1;
+    display: inline-block;
+    z-index: 31;
     font-size: 14px;
 }
 

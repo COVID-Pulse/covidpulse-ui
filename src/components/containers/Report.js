@@ -6,6 +6,7 @@ import axios from 'axios';
 import {AXIOS_CONFIGS} from "../../configs/axios-configs";
 
 import { useHistory } from "react-router-dom";
+import { APIURL } from '../../configs/app-config';
 
 
 const Report = () => {
@@ -55,7 +56,7 @@ const Report = () => {
         };
 
         setLoading(true);
-        axios.post("https://covid-pulse-api.herokuapp.com/api/covid19/report/", payload, AXIOS_CONFIGS)
+        axios.post(APIURL + "report/", payload, AXIOS_CONFIGS)
             .then((result) => {
                 history.push("/lookup");
             }).catch((error) => {

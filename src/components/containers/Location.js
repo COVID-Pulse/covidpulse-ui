@@ -35,26 +35,37 @@ const Location = (props) => {
             country: ""
         };
 
+        let political = '';
+
         address_components.map( address_component => {
-            address_component.types.map( (typ) => {
-                if ( typ === "political" ) {
-                    updateLocationData.area = address_component.long_name;
-                }
-    
-                if ( typ === "locality" ) {
-                    updateLocationData.city = address_component.long_name;
-                }
-    
-                if ( typ === "administrative_area_level_1" ) {
-                    updateLocationData.state = address_component.short_name;
-                }
-    
-                if ( typ === "country" ) {
-                    updateLocationData.country = address_component.long_name;
-                }
-            })
+            if ( address_component.types[0] === 'political' ) {
+                political = address_component.long_name;
+            }
+            if ( address_component.types[0] === 'neighborhood' ) {
+                updateLocationData.area = address_component.long_name;
+            }
+
+            if ( address_component.types[0] === "administrative_area_level_2" ) {
+                updateLocationData.city = address_component.long_name;
+            }
+
+            if ( address_component.types[0] === "administrative_area_level_1" ) {
+                updateLocationData.state = address_component.short_name;
+            }
+
+            if ( address_component.types[0] === "country" ) {
+                updateLocationData.country = address_component.long_name;
+            }
             return true;
         });
+
+        if ( updateLocationData.area ===  '' && political !== '' ) {
+            updateLocationData.area = political;
+        }
+        
+        if ( updateLocationData.area ===  '' ) {
+            updateLocationData.area = updateLocationData.city;
+        }
         return updateLocationData;
     };
 
