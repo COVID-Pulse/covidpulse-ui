@@ -16,7 +16,10 @@
     "cordova-android": "^8.1.0",
     "cordova-browser": "^6.0.0",
     "cordova-plugin-android-permissions": "^1.0.2",
+    "cordova-plugin-badge": "^0.8.8",
     "cordova-plugin-device": "^2.0.3",
+    "cordova-plugin-local-notification": "git+https://github.com/katzer/cordova-plugin-local-notifications.git",
+    "cordova-plugin-local-notifications": "^1.0.0",
     "google-map-react": "^1.1.7",
     "jsx-control-statements": "^3.2.8",
     "public-ip": "^4.0.1",
@@ -62,7 +65,10 @@
     "plugins": {
       "cordova-plugin-whitelist": {},
       "cordova-plugin-android-permissions": {},
-      "cordova-plugin-device": {}
+      "cordova-plugin-device": {},
+      "cordova-plugin-local-notification": {
+        "ANDROID_SUPPORT_V4_VERSION": "26.+"
+      }
     },
     "platforms": [
       "android",

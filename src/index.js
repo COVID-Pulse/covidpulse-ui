@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import publicIp from "public-ip";
 
-const cordova = window.cordova;
 
 const renderReactDom = () => {
     ReactDOM.render(<App />, document.getElementById('root'));
@@ -19,6 +18,7 @@ const  getIp = async () => {
 
 if (window.cordova) {
     document.addEventListener('deviceready', () => {
+        const cordova = window.cordova;
         const permissions = cordova.plugins.permissions;
         permissions.requestPermission(permissions.ACCESS_FINE_LOCATION, (iderd) => console.log("Permission provided"), () => console.log("Permission not prov"));
         const cordovaDevice = window.device;

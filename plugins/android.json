@@ -15,7 +15,15 @@
     },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "com.covidpulse.ui"
+    },
+    "cordova-plugin-local-notification": {
+      "ANDROID_SUPPORT_V4_VERSION": "26.+",
+      "PACKAGE_NAME": "com.covidpulse.ui"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-badge": {
+      "PACKAGE_NAME": "com.covidpulse.ui"
+    }
+  }
 }
