@@ -125,7 +125,7 @@ const MapComponent = (props) => {
     return (
         <div style={{height: props.height, width: props.width}}>
             <GoogleMapReact
-                bootstrapURLKeys={{key: "AIzaSyCCuPYXot_6UOeBPPp4pHVqHVfK_k9SLMY"}}
+                bootstrapURLKeys={{key: "API-KEY"}}
                 center={props.position ? props.position : locationCenter}
                 zoom={props.zoom}
                 yesIWantToUseGoogleMapApiInternals
