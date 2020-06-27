@@ -1,3 +1,5 @@
+![alt text](https://i.ibb.co/M7MfF7s/Screenshot-2020-06-27-at-2-48-16-PM.png)
+
 ### Web Start
 - Go to  `cordovaCovidPulse`
 - `npm install`
